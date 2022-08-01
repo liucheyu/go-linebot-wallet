@@ -1,8 +1,14 @@
 2022-08-01  
-1. 基本上使用狀態模式完成  
-2. 因為欄位取值很少，  
+1. 基本上使用狀態模式去回應callback傳來訊息
+2. shell目錄方便在本地端起ngrok和註冊line的call back url
+3. 項目分類和記帳方式的資訊不太會變動，從Redis取，Redis沒值則取db 
+4. 因為欄位取值很少，  
 將database/sql的Scan,Next封裝成sqlRowSets
-方便做GetString
+方便做GetString,GetInt等操作
+3. 剩餘功能、工作
+   - 報表和修改功能
+   - line目錄
+   - 測試
 
 markdown語法教學[網站](https://markdown.tw)
 

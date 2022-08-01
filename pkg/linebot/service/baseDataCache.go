@@ -27,13 +27,15 @@ func (base BaseDataCache) GetItemTypesMap() map[string]string {
 			itemMap["item_type_id"] = rowSets.GetString("item_type_id")
 			itemMap["item_type_name"] = rowSets.GetString("item_type_name")
 		}
+
+		base.Redis.HSet(base.Context, "itemTypes_map", itemMap)
 	}
 
 	return itemMap
 }
 
 func (base BaseDataCache) GetPayMethodMap() map[string]string {
-	itemMap, err := base.Redis.HGetAll(base.Context, "itemTypes_map").Result()
+	itemMap, err := base.Redis.HGetAll(base.Context, "paymethod_map").Result()
 
 	if err != nil || len(itemMap) == 0 {
 		itemMap = map[string]string{}
@@ -45,6 +47,8 @@ func (base BaseDataCache) GetPayMethodMap() map[string]string {
 			itemMap["pay_method_id"] = rowSets.GetString("pay_method_id")
 			itemMap["pay_method_name"] = rowSets.GetString("pay_method_name")
 		}
+
+		base.Redis.HSet(base.Context, "paymethod_map", itemMap)
 	}
 
 	return itemMap
